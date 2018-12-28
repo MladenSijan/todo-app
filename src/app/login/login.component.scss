@@ -1,0 +1,56 @@
+.app-title {
+  padding: 4rem;
+  text-align: center;
+
+  h1 {
+    font-family: 'NotoSans-Bold';
+    font-size: 3em;
+    color: #222;
+  }
+
+  @media screen and(max-width: 380px) {
+    h1 {
+      font-size: 2em;
+    }
+  }
+}
+
+.login-heading {
+  text-align: center;
+
+  h2 {
+    color: #222;
+    padding: 4rem;
+    font-family: 'NotoSans-Bold';
+    font-size: 2.4em;
+  }
+}
+
+.login-form-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 20%;
+
+    .form-field {
+      margin-bottom: 2rem;
+    }
+
+    .button-wrapper {
+      background: rgba(103, 58, 183, 0.09);
+
+      button {
+        width: 100%;
+      }
+
+      ::ng-deep .mat-button-wrapper {
+        font-family: NotoSans-Bold;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+}

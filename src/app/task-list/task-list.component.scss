@@ -1,0 +1,125 @@
+.task-list-wrapper {
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  .task-list-header {
+    margin-bottom: 4rem;
+    text-align: center;
+
+    .task-list-heading {
+      font-family: 'NotoSans-Bold';
+      font-size: 1.6em;
+      color: #673ab7;
+    }
+  }
+
+  .task-list {
+    height: 23rem;
+    overflow-y: scroll;
+
+    .task-list__item {
+      display: flex;
+      padding: 1.3rem 1.5rem 1.3rem;
+      align-items: flex-start;
+      flex-flow: column;
+      margin: 0 0 1rem;
+      border-radius: 4px;
+      background: #fafafa;
+      background: rgba(103, 58, 183, 0.09);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+      .task-list__item-content {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 0.8rem;
+
+        .task-list__item__title {
+          font-size: 1.4em;
+          margin-right: 1rem;
+          font-family: 'NotoSans-Bold';
+          color: #222;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .task-list__item-controls {
+          display: flex;
+          flex-wrap: nowrap;
+
+          .task_list__item-control {
+            cursor: pointer;
+
+            .mat-icon {
+              font-size: 2em;
+              line-height: 2rem;
+              height: 2rem;
+              width: 2rem;
+              transition: 0.2s all;
+
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+          }
+
+          .task_list__item-control--check {
+            margin-right: 0.7rem;
+          }
+        }
+
+        @media screen and(max-width: 980px) {
+          .task-list__item__title {
+            font-size: 1.1em;
+          }
+
+          .task-list__item__date-created {
+            font-size: 0.8em;
+          }
+        }
+      }
+
+      .task-list__item__footer {
+        justify-content: flex-start;
+        width: 100%;
+
+        .task-list__item__date-created {
+          font-family: NotoSans-Bold;
+          color: #444;
+        }
+      }
+    }
+
+    @media screen and(max-width: 907px) {
+      .task-list__item {
+        padding: 1.3rem 1rem 1.3rem;
+      }
+    }
+  }
+
+  @media screen and(max-width: 680px) {
+    .task-list-header {
+      display: none;
+    }
+  }
+
+  .notask-info {
+    text-align: center;
+    height: 23rem;
+
+    p {
+      font-family: 'NotoSans-Bold';
+      font-size: 1.2em;
+      color: #444;
+    }
+  }
+}
+
+@media screen and(max-width: 1200px) {
+  .task-list-wrapper {
+    padding: 1rem;
+  }
+}

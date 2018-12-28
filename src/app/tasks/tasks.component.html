@@ -1,0 +1,42 @@
+<div class="navbar">
+  <button color="primary" mat-button class="logout" (click)="logout()">
+    Logout <mat-icon>exit_to_app</mat-icon>
+  </button>
+</div>
+<div class="content-wrapper">
+  <div class="task-list-toggle" (window:resize)="checkWidth()">
+    <mat-button-toggle-group #group="matButtonToggleGroup" [value]="toggleValue">
+      <mat-button-toggle value="notDone">TO DO</mat-button-toggle>
+      <mat-button-toggle value="done">DONE</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="content">
+    <div class="new-task-wrapper">
+      <form class="new-task" [formGroup]="newTaskForm" (ngSubmit)="sendContent()">
+        <div class="new-task__input">
+          <mat-form-field>
+            <input matInput placeholder="New task" formControlName="newTask"
+              [(ngModel)]="newTask">
+            <div mat-button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear" (click)="newTask = ''">
+              <mat-icon>close</mat-icon>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="new-task__button">
+          <button type="submit" [disabled]="newTask === undefined || newTask === '' || newTask === null" mat-mini-fab
+            color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="tasks-wrapper">
+      <div class="task-list-column" [style.display]="(group.value==='done' && isToggleVisible) ? 'none' : 'block'">
+        <app-task-list (taskChecked)="getCheckedTask($event)"></app-task-list>
+      </div>
+      <div class="task-list-column" [style.display]="(group.value==='notDone' && isToggleVisible) ? 'none' : 'block'">
+        <app-task-list [checkedTask]="checkedTask" [isDoneList]="true"></app-task-list>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="task-list-wrapper">
+  <div class="task-list-header">
+    <h1 class="task-list-heading">{{isDoneList? 'Checked tasks' : 'Tasks to do'}}</h1>
+  </div>
+  <div *ngIf="tasks.length > 0;then taskList else noTasks"></div>
+  <ng-template #taskList>
+    <div class="task-list" [ngClass]="{'task-list--done': isDoneList}" [ngClass]="{'task-list--hidden': true}">
+      <div class="task-list__item" *ngFor="let task of tasks">
+        <div class="task-list__item-content">
+          <p class="task-list__item__title">{{ task.content}}</p>
+          <div class="task-list__item-controls">
+            <div *ngIf="!isDoneList" class="task_list__item-control task_list__item-control--check" (click)="checkTask(task)">
+              <mat-icon>done</mat-icon>
+            </div>
+            <!-- pass task to function -->
+            <div class="task_list__item-control" (click)="deleteTask(task)">
+              <mat-icon>delete</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="task-list__item__footer">
+          <p class="task-list__item__date-created">{{ task.created | date:shortDate }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #noTasks>
+    <div class="notask-info">
+      <p>{{isDoneList? 'No checked tasks yet' : 'There are currently no tasks'}}</p>
+    </div>
+  </ng-template>
+</div>
